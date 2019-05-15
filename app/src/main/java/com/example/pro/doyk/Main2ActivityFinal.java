@@ -15,8 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
-import com.example.pro.doyk.Model.QuestionCompFunda;
-import com.example.pro.doyk.Model.QuestionRandom;
+import com.example.pro.doyk.Model.QuestionOS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +24,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Main2ActivityFinal extends AppCompatActivity {
 
-    List<QuestionRandom> quesList1;
+    List<QuestionOS> quesList1;
     public int score=0;
     int ctr1=1;
-    QuestionRandom currentQ1;
+    QuestionOS currentQ1;
     TextView txtQuestion1;
     RadioGroup grp;
     RadioButton rda1, rdb1, rdc1, rdd1;
@@ -62,7 +61,7 @@ public class Main2ActivityFinal extends AppCompatActivity {
         textViewTime1 = (TextView)findViewById(R.id.textViewTime);
         final CounterClass timer = new CounterClass(1800000, 1000);
         timer.start();
-        quesList1=db.getAllQuestions3(tableName);
+        quesList1=db.getAllQuestions(tableName, "B");
         for(int i=0;i<300;i++){
             while(true){
                 int next = random1.nextInt(300);
@@ -100,15 +99,15 @@ public class Main2ActivityFinal extends AppCompatActivity {
                 progressBar.setProgress(progress);
                 RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
                 //Log.d("yourans", currentQ1.getANSWER1() + " " + answer.getText());
-                if (currentQ1.getANSWER3().equals(answer.getText())) {
+                if (currentQ1.getANSWER().equals(answer.getText())) {
                     score++;
                     //Log.d("score", "Your score" + score1);
                 }
                 else
                 {
-                    wrongQuestListRandom.add(number, currentQ1.getQUESTION3());
+                    wrongQuestListRandom.add(number, currentQ1.getQUESTION());
                     selectedAnsRandom.add(number, answer.getText().toString());
-                    actualAnswerRandom.add(number, currentQ1.getANSWER3());
+                    actualAnswerRandom.add(number, currentQ1.getANSWER());
                     number++;
                 }
                 grp.clearCheck();
@@ -159,11 +158,11 @@ public class Main2ActivityFinal extends AppCompatActivity {
         finish();
     }
     private void setQuestionView(){
-        txtQuestion1.setText(currentQ1.getQUESTION3());
-        rda1.setText(currentQ1.getOPTA3());
-        rdb1.setText(currentQ1.getOPTB3());
-        rdc1.setText(currentQ1.getOPTC3());
-        rdd1.setText(currentQ1.getOPTD3());
+        txtQuestion1.setText(currentQ1.getQUESTION());
+        rda1.setText(currentQ1.getOPTA());
+        rdb1.setText(currentQ1.getOPTB());
+        rdc1.setText(currentQ1.getOPTC());
+        rdd1.setText(currentQ1.getOPTD());
         if(ctr1<10)
             qstnNo.setText("0" + ctr1 + "/30");
         else

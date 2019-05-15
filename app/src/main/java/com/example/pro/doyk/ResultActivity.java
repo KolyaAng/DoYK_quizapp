@@ -28,7 +28,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private ImageView img;
     private TextView tvPerc;
-    String tableName="",catName="";
+    String levelName="",catName="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,31 +43,31 @@ public class ResultActivity extends AppCompatActivity {
         TextView txtCorrectAns = (TextView) findViewById(R.id.txtCorrectAns);
         //get score
         final Bundle b = getIntent().getExtras();
-        if (b.containsKey("scoreOS")) {
-            scoreOS = b.getInt("scoreOS");
-            tableName=b.getString("section");
-            catName=b.getString("category");
-            dbHelper.insertScoreOS(scoreOS,tableName,catName);
-            score = scoreOS;
-        } else if (b.containsKey("scoreCompFunda")) {
-            scoreCOMPFUNDA = b.getInt("scoreCompFunda");
-            tableName=b.getString("section");
-            catName=b.getString("category");
-            dbHelper.insertScoreCompFunda(scoreCOMPFUNDA,tableName,catName);
-            score = scoreCOMPFUNDA;
-        } else if (b.containsKey("scoreHardware")) {
-            scoreHARDWARE = b.getInt("scoreHardware");
-            tableName=b.getString("section");
-            catName=b.getString("category");
-            dbHelper.insertScoreHardware(scoreHARDWARE,tableName,catName);
-            score = scoreHARDWARE;
-        } else if (b.containsKey("scoreRandom")){
-            scoreRandom = b.getInt("scoreRandom");
-            tableName=b.getString("section");
-            dbHelper.insertScoreFinal(scoreRandom,tableName);
-            score = scoreRandom;
-
-        }
+        if (b != null) {
+            scoreOS = b.getInt("score");
+            catName=b.getString("category_name");
+            levelName=b.getString("level_name");
+            dbHelper.insertScore(scoreOS,catName,levelName);
+            score = scoreOS;}
+//        } else if (b.containsKey("scoreCompFunda")) {
+//            scoreCOMPFUNDA = b.getInt("scoreCompFunda");
+//            tableName=b.getString("section");
+//            catName=b.getString("category");
+//            dbHelper.insertScoreCompFunda(scoreCOMPFUNDA,tableName,catName);
+//            score = scoreCOMPFUNDA;
+//        } else if (b.containsKey("scoreHardware")) {
+//            scoreHARDWARE = b.getInt("scoreHardware");
+//            tableName=b.getString("section");
+//            catName=b.getString("category");
+//            dbHelper.insertScoreHardware(scoreHARDWARE,tableName,catName);
+//            score = scoreHARDWARE;
+//        } else if (b.containsKey("scoreRandom")){
+//            scoreRandom = b.getInt("scoreRandom");
+//            tableName=b.getString("section");
+//            dbHelper.insertScoreFinal(scoreRandom,tableName);
+//            score = scoreRandom;
+//
+//        }
 
         txtCorrectAns.setText("Total Answered : 30" + "\n" + "Correct Answered : " + score + "\nWrong Answered : " + (30 - score));
 

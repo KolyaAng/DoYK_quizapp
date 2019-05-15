@@ -12,6 +12,7 @@ public class Activity_Levels1 extends AppCompatActivity {
     LinearLayout beginner;
     LinearLayout intermediate;
     LinearLayout expert;
+    String catName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,50 +24,53 @@ public class Activity_Levels1 extends AppCompatActivity {
         beginner=(LinearLayout)findViewById(R.id.begin);
         intermediate=(LinearLayout)findViewById(R.id.inter);
         expert=(LinearLayout)findViewById(R.id.expert);
-        Intent iin= getIntent();
-        Bundle b=iin.getExtras();
-        final String tableName;
+        //
+        beginner.setOnClickListener(listener);
+        intermediate.setOnClickListener(listener);
+        expert.setOnClickListener(listener);
+        //
+        Intent iin = getIntent();
+        Bundle b = iin.getExtras();
         if(b!=null){
-            tableName=(String)b.get("table_name");
-            Log.d("Table Name",tableName);
+            catName=(String)b.get("category_name");
+            Log.d("Category Name",catName);
         }
         else
         {
-            tableName="";
+            catName="";
         }
 
-        beginner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
-                i.putExtra("table_name",tableName);
-                i.putExtra("level_name","B");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
-        intermediate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
-                i.putExtra("table_name",tableName);
-                i.putExtra("level_name","I");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
-        expert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
-                i.putExtra("table_name",tableName);
-                i.putExtra("level_name","E");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
-
     }
+
+
+    String levelName;
+ //   String callActivity;
+
+
+    View.OnClickListener listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+                switch(v.getId()){
+                    case R.id.begin:
+                        levelName = "B";
+                        //callActivity = "Main2ActivitySec1.class";
+                        break;
+                    case R.id.inter:
+                        levelName = "I";
+                        break;
+                    case R.id.expert:
+                        levelName = "E";
+                        break;
+                }
+            Intent i;
+                i = new Intent(getApplicationContext(), Main2ActivitySec1.class);
+            i.putExtra("category_name",catName);
+                i.putExtra("level_name", levelName);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+            }
+
+    };
 
     @Override
     public boolean onSupportNavigateUp(){

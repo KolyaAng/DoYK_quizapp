@@ -58,11 +58,13 @@ public class LeaderBoardSec1B extends RecyclerView.Adapter<LeaderBoardSec1B.View
     @Override
     public void onBindViewHolder(ViewHolderUsers holder, int position) {
         sortingScore();
+        if(position >= list.size()){
+            return;}
         Map.Entry<String, Integer> fireUser =  list.get(position);
         {
             holder.getUserDisplayName().setText(fireUser.getKey());
             //compFundaScore
-            holder.getUserCompMarks().setText("" + fireUser.getValue());
+            holder.getUserTotalScore().setText("" + fireUser.getValue());
         }
     }
 
@@ -72,8 +74,8 @@ public class LeaderBoardSec1B extends RecyclerView.Adapter<LeaderBoardSec1B.View
         for(int i=0;i<mUsers.size();i++) {
             UserModel fireUser = mUsers.get(i);
             //if(fireUser.getCompMarks()>0) {
-            getNameWithScore.put(fireUser.getDisplayName(), fireUser.getCompMarksB());
-            //}
+            getNameWithScore.put(fireUser.getDisplayName(), fireUser.getTotalScoreMarks());
+            //fireUser.getTotalScoreMarks()
         }
 
         Set<Map.Entry<String, Integer>> set = getNameWithScore.entrySet();
@@ -111,13 +113,13 @@ public class LeaderBoardSec1B extends RecyclerView.Adapter<LeaderBoardSec1B.View
     public class ViewHolderUsers extends RecyclerView.ViewHolder  {
 
         TextView mUserDisplayName;
-        TextView scoreCompFunda;
+        TextView scoreTotal;
         Context mContextViewHolder;
 
         public ViewHolderUsers(Context context, View itemView) {
             super(itemView);
             mUserDisplayName = (TextView) itemView.findViewById(R.id.userName);
-            scoreCompFunda = (TextView) itemView.findViewById(R.id.score);
+            scoreTotal = (TextView) itemView.findViewById(R.id.score);
             mContextViewHolder = context;
         }
 
@@ -131,8 +133,8 @@ public class LeaderBoardSec1B extends RecyclerView.Adapter<LeaderBoardSec1B.View
             return mUserDisplayName;
         }
 
-        public TextView getUserCompMarks() {
-            return scoreCompFunda;
+        public TextView getUserTotalScore() {
+            return scoreTotal;
         }
     }
 }

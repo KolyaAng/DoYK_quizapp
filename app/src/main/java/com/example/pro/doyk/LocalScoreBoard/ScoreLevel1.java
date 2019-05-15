@@ -21,9 +21,9 @@ public class ScoreLevel1 extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         int compFundaB,compFundaI,compFundaE;
         compFundaB=compFundaI=compFundaE=0;
-        compFundaB=dbHelper.getScoreCompFundaB();
-        compFundaI=dbHelper.getScoreCompFundaI();
-        compFundaE=dbHelper.getScoreCompFundaE();
+        compFundaB=dbHelper.getScoreOSB("catPhysic","B");
+        compFundaI=dbHelper.getScoreOSB("catGeography","B");
+        compFundaE=dbHelper.getScoreOSB("catReligion","B");
         s1=(TextView)findViewById(R.id.st1);
         s2=(TextView)findViewById(R.id.st2);
         s3=(TextView)findViewById(R.id.st3);

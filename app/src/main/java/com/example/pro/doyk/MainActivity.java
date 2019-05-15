@@ -41,10 +41,11 @@ public class MainActivity extends AppCompatActivity {
         hw=(LinearLayout)findViewById(R.id.hardware);
         finale=(LinearLayout)findViewById(R.id.finale);
         sc=(LinearLayout)findViewById(R.id.score);
+
         lfunda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Activity_Levels1.class);
+                Intent i= new Intent(getApplicationContext(),CategoryActivity.class);
                 i.putExtra("table_name","questCompFunda");
 
                 startActivity(i);
@@ -52,33 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        os.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Activity_Levels2.class);
-                i.putExtra("table_name","questOS");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
-        hw.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Activity_Levels3.class);
-                i.putExtra("table_name","questHardware");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
-        finale.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),Info.class);
-                i.putExtra("table_name","questFinal");
-                startActivity(i);
-                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            }
-        });
+
         sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,8 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -17,7 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
-import com.example.pro.doyk.Model.QuestionCompFunda;
+import com.example.pro.doyk.Model.QuestionOS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,24 +23,24 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Main2ActivitySec1 extends AppCompatActivity {
-    List<QuestionCompFunda> quesList1;
+    List<QuestionOS> quesList;
     public int score=0;
     int ctr1=1;
-    QuestionCompFunda currentQ1;
-    TextView txtQuestion1;
+    QuestionOS currentQ1;
+    TextView txtQuestion;
     RadioGroup grp;
-    RadioButton rda1, rdb1, rdc1, rdd1;
-    Button butNext1;
-    Random random1 = new Random();
+    RadioButton rda, rdb, rdc, rdd;
+    Button butNext;
+    Random random = new Random();
     ArrayList<Integer> list = new ArrayList<Integer>();
-    TextView textViewTime1;
-    public ArrayList<String> wrongQuestListCompFunda = new ArrayList<String>();
-    public ArrayList<String> selectedAnsCompFunda = new ArrayList<String>();
-    public ArrayList<String> actualAnswerCompFunda = new ArrayList<String>();
+    TextView textViewTime;
+    public ArrayList<String> wrongQuestList = new ArrayList<String>();
+    public ArrayList<String> selectedAnswer = new ArrayList<String>();
+    public ArrayList<String> actualAnswer = new ArrayList<String>();
     int number;
     ProgressBar progressBar;
     int progress = 1;
-    String tableName="",catName="";
+    String catName="",levelName="";
     TextView qstnNo;
 
     @Override
@@ -55,20 +53,20 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         Bundle b=iin.getExtras();
 
         if(b!=null){
-            tableName=(String)b.get("table_name");
-            catName=(String)b.get("level_name");
-            Log.d("Table Name",tableName);
-            Log.d("Level Name",catName);
+            catName=(String)b.get("category_name");
+            levelName=(String)b.get("level_name");
+            Log.d("Category Name",catName);
+            Log.d("Level Name",levelName);
         }
         number=0;
         DbHelper db= new DbHelper(this);
-        textViewTime1 = (TextView)findViewById(R.id.textViewTime);
+        textViewTime = (TextView)findViewById(R.id.textViewTime);
         final CounterClass timer = new CounterClass(1800000, 1000);
         timer.start();
-        quesList1=db.getAllQuestions1(tableName,catName);
-        for(int i=0;i<50;i++){
+        quesList =db.getAllQuestions(catName,levelName);
+        for(int i=0;i<5;i++){
             while(true){
-                int next = random1.nextInt(50);
+                int next = random.nextInt(5);
                 if(!list.contains(next))
                 {
                     list.add(next);
@@ -76,51 +74,51 @@ public class Main2ActivitySec1 extends AppCompatActivity {
                 }
             }
         }
-        currentQ1=quesList1.get(list.get(0));
-        txtQuestion1=(TextView)findViewById(R.id.textView1);
-        rda1=(RadioButton)findViewById(R.id.radio0);
-        rdb1=(RadioButton)findViewById(R.id.radio1);
-        rdc1=(RadioButton)findViewById(R.id.radio2);
-        rdd1=(RadioButton)findViewById(R.id.radio3);
-        butNext1=(Button)findViewById(R.id.button1);
+        currentQ1= quesList.get(list.get(0));
+        txtQuestion =(TextView)findViewById(R.id.textView1);
+        rda =(RadioButton)findViewById(R.id.radio0);
+        rdb =(RadioButton)findViewById(R.id.radio1);
+        rdc =(RadioButton)findViewById(R.id.radio2);
+        rdd =(RadioButton)findViewById(R.id.radio3);
+        butNext =(Button)findViewById(R.id.button1);
         setQuestionView();
         grp = (RadioGroup) findViewById(R.id.radioGroup1);
-        butNext1.setEnabled(false);
+        butNext.setEnabled(false);
         grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 if(i== R.id.radio0 || i == R.id.radio1 || i==R.id.radio2 || i == R.id.radio3)
-                    butNext1.setEnabled(true);
+                    butNext.setEnabled(true);
             }
         });
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setMax(30);
+        progressBar.setMax(10);
         progressBar.setProgress(1);
-        butNext1.setOnClickListener(new View.OnClickListener() {
+        butNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progress = progress+1;
                 progressBar.setProgress(progress);
                 RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
                 //Log.d("yourans", currentQ1.getANSWER1() + " " + answer.getText());
-                if (currentQ1.getANSWER1().equals(answer.getText())) {
+                if (currentQ1.getANSWER().equals(answer.getText())) {
                     score++;
                     //Log.d("score", "Your score" + score1);
                 }
                 else
                 {
-                    wrongQuestListCompFunda.add(number, currentQ1.getQUESTION1());
-                    selectedAnsCompFunda.add(number, answer.getText().toString());
-                    actualAnswerCompFunda.add(number, currentQ1.getANSWER1());
+                    wrongQuestList.add(number, currentQ1.getQUESTION());
+                    selectedAnswer.add(number, answer.getText().toString());
+                    actualAnswer.add(number, currentQ1.getANSWER());
                     number++;
                 }
                 grp.clearCheck();
-                butNext1.setEnabled(false);
-                if (ctr1 < 31) {
-                    if (ctr1 == 30) {
-                        butNext1.setText("End Test");
+                butNext.setEnabled(false);
+                if (ctr1 < 5) {
+                    if (ctr1 == 4) {
+                        butNext.setText("End Test");
                     }
-                    currentQ1 = quesList1.get(list.get(ctr1));
+                    currentQ1 = quesList.get(list.get(ctr1));
                     setQuestionView();
                 } else {
                     timer.onFinish();
@@ -142,7 +140,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
             String hms = String.format("%02d:%02d",
                     TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
                     TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-            textViewTime1.setText(hms);
+            textViewTime.setText(hms);
         }
 
         @Override
@@ -154,23 +152,23 @@ public class Main2ActivitySec1 extends AppCompatActivity {
     public void showResult(){
         Intent intent = new Intent(Main2ActivitySec1.this, ResultActivity.class);
         Bundle b = new Bundle();
-        b.putInt("scoreCompFunda", score);//Your score
-        b.putString("section",tableName);//Your table name
-        b.putString("category",catName);//Your category name
-        intent.putStringArrayListExtra("wrongQuestions", wrongQuestListCompFunda);
-        intent.putStringArrayListExtra("selectedAnswer", selectedAnsCompFunda);
-        intent.putStringArrayListExtra("actualAnswer", actualAnswerCompFunda);
+        b.putInt("score", score);//Your score
+        b.putString("category_name",catName);//Your table name
+        b.putString("level_name",levelName);//Your category name
+        intent.putStringArrayListExtra("wrongQuestions", wrongQuestList);
+        intent.putStringArrayListExtra("selectedAnswer", selectedAnswer);
+        intent.putStringArrayListExtra("actualAnswer", actualAnswer);
         intent.putExtras(b); //Put your score to your next Intent
         startActivity(intent);
         finish();
     }
 
     private void setQuestionView(){
-        txtQuestion1.setText(currentQ1.getQUESTION1());
-        rda1.setText(currentQ1.getOPTA1());
-        rdb1.setText(currentQ1.getOPTB1());
-        rdc1.setText(currentQ1.getOPTC1());
-        rdd1.setText(currentQ1.getOPTD1());
+        txtQuestion.setText(currentQ1.getQUESTION());
+        rda.setText(currentQ1.getOPTA());
+        rdb.setText(currentQ1.getOPTB());
+        rdc.setText(currentQ1.getOPTC());
+        rdd.setText(currentQ1.getOPTD());
         if(ctr1<10)
             qstnNo.setText("0" + ctr1 + "/30");
         else

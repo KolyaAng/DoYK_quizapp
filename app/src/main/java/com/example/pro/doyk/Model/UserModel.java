@@ -4,117 +4,99 @@ public class UserModel {
     private String displayName;
     private String email;
     private long createdAt;
-    public int compMarksB=0;
-    public int compMarksI=0;
-    public int compMarksE=0;
-    public int hardwareMarksB=0;
-    public int hardwareMarksI=0;
-    public int hardwareMarksE=0;
-    public int osMarksB=0;
-    public int osMarksI=0;
-    public int osMarksE=0;
-    public int finalMarks=0;
+    public int totalScoreMarks = 3;
 
     private String mRecipientId;
 
     public UserModel() {
     }
 
-    public UserModel(String displayName, String email,long createdAt,int compMarksB,int compMarksI,int compMarksE,int hardwareMarksB,int hardwareMarksI,int hardwareMarksE,int osMarksB,int osMarksI,int osMarksE,int finalMarks) {
+    public UserModel(String displayName, String email,long createdAt,int totalScoreMarks) {
         this.displayName = displayName;
         this.email = email;
         this.createdAt = createdAt;
-        this.compMarksB=compMarksB;
-        this.compMarksI=compMarksI;
-        this.compMarksE=compMarksE;
-        this.hardwareMarksB=hardwareMarksB;
-        this.hardwareMarksI=hardwareMarksI;
-        this.hardwareMarksE=hardwareMarksE;
-        this.osMarksB=osMarksB;
-        this.osMarksI=osMarksI;
-        this.osMarksE=osMarksE;
-        this.finalMarks=finalMarks;
+        this.totalScoreMarks = totalScoreMarks;
     }
 
-    public int getCompMarksB() {
-        return compMarksB;
+    public int getTotalScoreMarks() {
+        return totalScoreMarks;
     }
 
-    public void setCompMarksB(int compMarksB) {
-        this.compMarksB = compMarksB;
+    public void setTotalScoreMarks(int totalScoreMarks) {
+        this.totalScoreMarks = totalScoreMarks;
     }
 
-    public int getCompMarksI() {
-        return compMarksI;
-    }
-
-    public void setCompMarksI(int compMarksI) {
-        this.compMarksI = compMarksI;
-    }
-
-    public int getCompMarksE() {
-        return compMarksE;
-    }
-
-    public void setCompMarksE(int compMarksE) {
-        this.compMarksE = compMarksE;
-    }
-
-    public int getHardwareMarksB() {
-        return hardwareMarksB;
-    }
-
-    public void setHardwareMarksB(int hardwareMarksB) {
-        this.hardwareMarksB = hardwareMarksB;
-    }
-
-    public int getHardwareMarksI() {
-        return hardwareMarksI;
-    }
-
-    public void setHardwareMarksI(int hardwareMarksI) {
-        this.hardwareMarksI = hardwareMarksI;
-    }
-
-    public int getHardwareMarksE() {
-        return hardwareMarksE;
-    }
-
-    public void setHardwareMarksE(int hardwareMarksE) {
-        this.hardwareMarksE = hardwareMarksE;
-    }
-
-    public int getOsMarksB() {
-        return osMarksB;
-    }
-
-    public void setOsMarksB(int osMarksB) {
-        this.osMarksB = osMarksB;
-    }
-
-    public int getOsMarksI() {
-        return osMarksI;
-    }
-
-    public void setOsMarksI(int osMarksI) {
-        this.osMarksI = osMarksI;
-    }
-
-    public int getOsMarksE() {
-        return osMarksE;
-    }
-
-    public void setOsMarksE(int osMarksE) {
-        this.osMarksE = osMarksE;
-    }
-
-    public int getFinalMarks() {
-        return finalMarks;
-    }
-
-    public void setFinalMarks(int finalMarks) {
-        this.finalMarks = finalMarks;
-    }
+//    public int getCompMarksI() {
+//        return compMarksI;
+//    }
+//
+//    public void setCompMarksI(int compMarksI) {
+//        this.compMarksI = compMarksI;
+//    }
+//
+//    public int getCompMarksE() {
+//        return compMarksE;
+//    }
+//
+//    public void setCompMarksE(int compMarksE) {
+//        this.compMarksE = compMarksE;
+//    }
+//
+//    public int getHardwareMarksB() {
+//        return hardwareMarksB;
+//    }
+//
+//    public void setHardwareMarksB(int hardwareMarksB) {
+//        this.hardwareMarksB = hardwareMarksB;
+//    }
+//
+//    public int getHardwareMarksI() {
+//        return hardwareMarksI;
+//    }
+//
+//    public void setHardwareMarksI(int hardwareMarksI) {
+//        this.hardwareMarksI = hardwareMarksI;
+//    }
+//
+//    public int getHardwareMarksE() {
+//        return hardwareMarksE;
+//    }
+//
+//    public void setHardwareMarksE(int hardwareMarksE) {
+//        this.hardwareMarksE = hardwareMarksE;
+//    }
+//
+//    public int getOsMarksB() {
+//        return osMarksB;
+//    }
+//
+//    public void setOsMarksB(int osMarksB) {
+//        this.osMarksB = osMarksB;
+//    }
+//
+//    public int getOsMarksI() {
+//        return osMarksI;
+//    }
+//
+//    public void setOsMarksI(int osMarksI) {
+//        this.osMarksI = osMarksI;
+//    }
+//
+//    public int getOsMarksE() {
+//        return osMarksE;
+//    }
+//
+//    public void setOsMarksE(int osMarksE) {
+//        this.osMarksE = osMarksE;
+//    }
+//
+//    public int getFinalMarks() {
+//        return finalMarks;
+//    }
+//
+//    public void setFinalMarks(int finalMarks) {
+//        this.finalMarks = finalMarks;
+//    }
 
     public long getCreatedAt() {
         return createdAt;

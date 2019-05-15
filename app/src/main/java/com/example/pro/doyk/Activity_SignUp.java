@@ -168,26 +168,7 @@ public class Activity_SignUp extends AppCompatActivity {
         return upassword.getText().toString().trim();
     }
 
-    public int getCompMarksB(){
-        return 0;
-    }
-    public int getCompMarksI(){
-        return 0;
-    }
-    public int getCompMarksE(){
-        return 0;
-    }
-
-    private int getHardwareMarksB() { return 0; }
-    private int getHardwareMarksI() { return 0; }
-    private int getHardwareMarksE() { return 0; }
-
-    private int getOSMarksB() { return 0; }
-    private int getOSMarksI() { return 0; }
-    private int getOSMarksE() { return 0; }
-
-    private int getFinalMarks()
-    {
+    public int getTotalScoreMarks(){
         return 0;
     }
 
@@ -240,16 +221,7 @@ public class Activity_SignUp extends AppCompatActivity {
                 getUserDisplayName(),
                 getUserEmail(),
                 new Date().getTime(),
-                getCompMarksB(),
-                getCompMarksI(),
-                getCompMarksE(),
-                getHardwareMarksB(),
-                getHardwareMarksI(),
-                getHardwareMarksE(),
-                getOSMarksB(),
-                getOSMarksI(),
-                getOSMarksE(),
-                getFinalMarks()
+                getTotalScoreMarks()
         );
     }
 }

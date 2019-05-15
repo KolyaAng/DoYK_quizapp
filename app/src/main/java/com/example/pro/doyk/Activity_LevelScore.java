@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
-import com.example.pro.doyk.LeaderBoard.LeaderScoreActivity;
-import com.example.pro.doyk.LocalScoreBoard.ScoreActivity;
+import com.example.pro.doyk.LeaderBoard.Fundamentals.LeaderBoardAcSec1B;
+import com.example.pro.doyk.LocalScoreBoard.ScoreLevel1;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
@@ -33,35 +34,17 @@ public class Activity_LevelScore extends AppCompatActivity {
         setAuthInstance();
         setDatabaseInstance();
 
-        int compMarksB=dbHelper.getScoreCompFundaB();
-        int compMarksI=dbHelper.getScoreCompFundaI();
-        int compMarksE=dbHelper.getScoreCompFundaE();
-        int hardwareMarksB=dbHelper.getScoreHardwareB();
-        int hardwareMarksI=dbHelper.getScoreHardwareI();
-        int hardwareMarksE=dbHelper.getScoreHardwareE();
-        int osMarksB=dbHelper.getScoreOSB();
-        int osMarksI=dbHelper.getScoreOSI();
-        int osMarksE=dbHelper.getScoreOSE();
-        int finalMarks=dbHelper.getScoreRandom();
+        int totalScore = dbHelper.getTotalScore();
 
         String userId = mAuth.getCurrentUser().getUid();
-        mUserRefDatabase.child("users").child(userId).child("compMarksB").setValue(compMarksB);
-        mUserRefDatabase.child("users").child(userId).child("compMarksI").setValue(compMarksI);
-        mUserRefDatabase.child("users").child(userId).child("compMarksE").setValue(compMarksE);
-        mUserRefDatabase.child("users").child(userId).child("hardwareMarksB").setValue(hardwareMarksB);
-        mUserRefDatabase.child("users").child(userId).child("hardwareMarksI").setValue(hardwareMarksI);
-        mUserRefDatabase.child("users").child(userId).child("hardwareMarksE").setValue(hardwareMarksE);
-        mUserRefDatabase.child("users").child(userId).child("osMarksB").setValue(osMarksB);
-        mUserRefDatabase.child("users").child(userId).child("osMarksI").setValue(osMarksI);
-        mUserRefDatabase.child("users").child(userId).child("osMarksE").setValue(osMarksE);
-        mUserRefDatabase.child("users").child(userId).child("finalMarks").setValue(finalMarks);
+        mUserRefDatabase.child("users").child(userId).child("totalScoreMarks").setValue(totalScore);
 
         yourScore=(LinearLayout)findViewById(R.id.inter);
         leaderBoard=(LinearLayout)findViewById(R.id.expert);
         yourScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),ScoreActivity.class);
+                Intent i= new Intent(getApplicationContext(),ScoreLevel1.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }
@@ -70,7 +53,13 @@ public class Activity_LevelScore extends AppCompatActivity {
         leaderBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(getApplicationContext(),LeaderScoreActivity.class);
+                int totalScore = dbHelper.getTotalScore();
+                String ts = String.valueOf(totalScore);
+
+                Toast toast = Toast.makeText(getApplicationContext(), ts, Toast.LENGTH_LONG);
+                toast.show();
+
+                Intent i= new Intent(getApplicationContext(), LeaderBoardAcSec1B.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }

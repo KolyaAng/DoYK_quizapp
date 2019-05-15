@@ -10,6 +10,8 @@ public class QuestionOS
     private String OPTD;
     private String ANSWER;
     private String CATEGORY;
+    private String LEVEL;
+
     public QuestionOS()
     {
         ID = 0;
@@ -19,9 +21,10 @@ public class QuestionOS
         OPTC = "";
         OPTD = "";
         CATEGORY="";
+        LEVEL = "";
     }
     public QuestionOS(String qUESTION, String oPTA, String oPTB, String oPTC, String oPTD,
-                      String aNSWER,String cATEGORY) {
+                      String aNSWER,String cATEGORY, String lEVEL) {
 
         QUESTION = qUESTION;
         OPTA = oPTA;
@@ -30,6 +33,7 @@ public class QuestionOS
         OPTD = oPTD;
         ANSWER = aNSWER;
         CATEGORY=cATEGORY;
+        LEVEL = lEVEL;
     }
 
     public int getID() {
@@ -94,6 +98,14 @@ public class QuestionOS
 
     public void setCATEGORY(String CATEGORY) {
         this.CATEGORY = CATEGORY;
+    }
+
+    public String getLEVEL() {
+        return LEVEL;
+    }
+
+    public void setLEVEL(String CATEGORY) {
+        this.LEVEL = CATEGORY;
     }
 }
 
