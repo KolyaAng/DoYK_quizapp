@@ -50,7 +50,7 @@ public class ResultActivity extends AppCompatActivity {
             dbHelper.insertScore(scoreOS,catName,levelName);
             score = scoreOS;}
 
-        txtCorrectAns.setText("Надано відповідей : 10" + "\n" + "Правильних : " + score + "\n Хибних : " + (10 - score));
+        txtCorrectAns.setText("Надано відповідей : 10" + "\n" + "Правильних : " + score + "\nХибних : " + (10 - score));
 
         wrongQuests = getIntent().getStringArrayListExtra("wrongQuestions");
         selectedAnswers = getIntent().getStringArrayListExtra("selectedAnswer");
@@ -77,20 +77,8 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    public boolean onSupportNavigateUp(){
+        finish();
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-
-        return super.onOptionsItemSelected(item);
     }
 }

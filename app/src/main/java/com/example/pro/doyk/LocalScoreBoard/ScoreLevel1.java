@@ -16,7 +16,7 @@ public class ScoreLevel1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorelevel1);
-        setTitle("Fundamentals Score");
+        setTitle("Особистий рейтинг");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         int compFundaB,compFundaI,compFundaE;

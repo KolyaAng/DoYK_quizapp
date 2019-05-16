@@ -31,7 +31,7 @@ public class Activity_LevelScore extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_score);
-        setTitle("Scores");
+        setTitle("Рейтинг");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setAuthInstance();

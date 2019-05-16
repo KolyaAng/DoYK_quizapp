@@ -182,6 +182,7 @@ public class Main2ActivityFinal extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+
                         finish();
                     }
                 })

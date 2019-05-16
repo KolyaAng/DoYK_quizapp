@@ -4,8 +4,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import java.util.Locale;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -18,11 +21,11 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-        setTitle("Category");
-        catPhis=(LinearLayout)findViewById(R.id.fundamentals);
-        catGeo=(LinearLayout)findViewById(R.id.operating);
-        catRel=(LinearLayout)findViewById(R.id.hardware);
-        catAll=(LinearLayout)findViewById(R.id.finale);
+        setTitle("Вибери категорію");
+        catPhis=(LinearLayout)findViewById(R.id.llcat1);
+        catGeo=(LinearLayout)findViewById(R.id.llcat2);
+        catRel=(LinearLayout)findViewById(R.id.llcat3);
+        catAll=(LinearLayout)findViewById(R.id.llcat12);
         //sc=(LinearLayout)findViewById(R.id.score);
         catPhis.setOnClickListener(listener);
         catGeo.setOnClickListener(listener);
@@ -36,21 +39,24 @@ public class CategoryActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch(v.getId()){
-                case R.id.fundamentals:
+                case R.id.llcat1:
                     catName = "catPhysic";
                     break;
-                case R.id.operating:
+                case R.id.llcat2:
                     catName = "catGeography";
                     break;
-                case R.id.hardware:
+                case R.id.llcat3:
                     catName = "catReligion";
                     break;
-                case R.id.finale:
-                    catName = "catAll";
+                case R.id.llcat12:
+                    catName = "";
                     break;
             }
-            Intent i= new Intent(getApplicationContext(),Activity_Levels1.class);
+            Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
             i.putExtra("category_name",catName);
+            //доки нема етапів
+            i.putExtra("level_name", "B");
+            Log.d("CategoryName", catName);
             startActivity(i);
             overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         }

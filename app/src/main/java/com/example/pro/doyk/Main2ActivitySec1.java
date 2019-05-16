@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.pro.doyk.Adapter.CategoryList;
 import com.example.pro.doyk.DbHelper.DbHelper;
 import com.example.pro.doyk.Model.QuestionOS;
 
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import static com.example.pro.doyk.Adapter.CategoryList.getCategoryTitle;
 
 public class Main2ActivitySec1 extends AppCompatActivity {
     List<QuestionOS> quesList;
@@ -95,15 +98,20 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         if(b!=null){
             catName=(String)b.get("category_name");
             levelName=(String)b.get("level_name");
-            Log.d("Category Name",catName);
-            Log.d("Level Name",levelName);
+            Log.d("CategoryName",catName);
+            Log.d("LevelName",levelName);
         }
+        String catTitle = getCategoryTitle(catName);
+        setTitle(catTitle);
         number=0;
         DbHelper db= new DbHelper(this);
         textViewTime = (TextView)findViewById(R.id.textViewTime);
        // final CounterClass timer = new CounterClass(1800000, 1000);
         timer.start();
-        quesList =db.getAllQuestions(catName,levelName);
+        if(catName == null){quesList = db.getRealAllQuestions();
+        Log.d("CategoryName", catName);
+        }else{
+        quesList =db.getAllQuestions(catName,levelName);}
         for(int i=0;i<5;i++){
             while(true){
                 int next = random.nextInt(5);
@@ -179,7 +187,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         rdc.setText(currentQ1.getOPTC());
         rdd.setText(currentQ1.getOPTD());
         if(ctr1<10)
-            qstnNo.setText("0" + ctr1 + "/0");
+            qstnNo.setText("0" + ctr1 + "/10");
         else
             qstnNo.setText("" + ctr1+ "/10");
         ctr1++;
@@ -192,6 +200,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("Так", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        timer.cancel();
                         finish();
                     }
                 })

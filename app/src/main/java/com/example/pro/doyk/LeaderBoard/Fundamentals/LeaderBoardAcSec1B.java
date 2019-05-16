@@ -35,6 +35,7 @@ public class LeaderBoardAcSec1B extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board_ac_sec1_b);
+        setTitle("Таблиця лідерів");
         mUsersRecyclerView=(RecyclerView)findViewById(R.id.recycler_view_users);
         setAuthInstance();
         setUsersDatabase();
