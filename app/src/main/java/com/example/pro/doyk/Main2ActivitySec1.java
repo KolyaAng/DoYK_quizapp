@@ -38,10 +38,50 @@ public class Main2ActivitySec1 extends AppCompatActivity {
     public ArrayList<String> selectedAnswer = new ArrayList<String>();
     public ArrayList<String> actualAnswer = new ArrayList<String>();
     int number;
-    ProgressBar progressBar;
-    int progress = 1;
     String catName="",levelName="";
     TextView qstnNo;
+    boolean timerFlag;
+    ///
+///
+    final CounterClass timer = new CounterClass(31500, 1000);
+
+    public void nextQuest(){
+        timer.start();
+        if (timerFlag){
+                RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
+                if (currentQ1.getANSWER().equals(answer.getText())) {
+                    score++;
+                }
+                else
+                {
+                    wrongQuestList.add(number, currentQ1.getQUESTION());
+                    selectedAnswer.add(number, answer.getText().toString());
+                    actualAnswer.add(number, currentQ1.getANSWER());
+                    number++;
+                }
+        }else
+        {
+            wrongQuestList.add(number, currentQ1.getQUESTION());
+            selectedAnswer.add(number, "Час питання вийшов.");
+            actualAnswer.add(number, currentQ1.getANSWER());
+            number++;
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        grp.clearCheck();
+        if (ctr1 < 5) {
+            currentQ1 = quesList.get(list.get(ctr1));
+            setQuestionView();
+        } else {
+            timer.cancel();
+            showResult();
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +101,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         number=0;
         DbHelper db= new DbHelper(this);
         textViewTime = (TextView)findViewById(R.id.textViewTime);
-        final CounterClass timer = new CounterClass(1800000, 1000);
+       // final CounterClass timer = new CounterClass(1800000, 1000);
         timer.start();
         quesList =db.getAllQuestions(catName,levelName);
         for(int i=0;i<5;i++){
@@ -83,51 +123,19 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         butNext =(Button)findViewById(R.id.button1);
         setQuestionView();
         grp = (RadioGroup) findViewById(R.id.radioGroup1);
-        butNext.setEnabled(false);
         grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(i== R.id.radio0 || i == R.id.radio1 || i==R.id.radio2 || i == R.id.radio3)
-                    butNext.setEnabled(true);
-            }
-        });
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setMax(10);
-        progressBar.setProgress(1);
-        butNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progress = progress+1;
-                progressBar.setProgress(progress);
-                RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
-                //Log.d("yourans", currentQ1.getANSWER1() + " " + answer.getText());
-                if (currentQ1.getANSWER().equals(answer.getText())) {
-                    score++;
-                    //Log.d("score", "Your score" + score1);
-                }
-                else
-                {
-                    wrongQuestList.add(number, currentQ1.getQUESTION());
-                    selectedAnswer.add(number, answer.getText().toString());
-                    actualAnswer.add(number, currentQ1.getANSWER());
-                    number++;
-                }
-                grp.clearCheck();
-                butNext.setEnabled(false);
-                if (ctr1 < 5) {
-                    if (ctr1 == 4) {
-                        butNext.setText("End Test");
-                    }
-                    currentQ1 = quesList.get(list.get(ctr1));
-                    setQuestionView();
-                } else {
-                    timer.onFinish();
-                    timer.cancel();
+                if(i== R.id.radio0 || i == R.id.radio1 || i==R.id.radio2 || i == R.id.radio3){
+
+                    timerFlag = true;
+                    nextQuest();
                 }
             }
         });
 
     }
+
 
     public class CounterClass extends CountDownTimer {
         public CounterClass(long millisInFuture, long countDownInterval) {
@@ -145,7 +153,8 @@ public class Main2ActivitySec1 extends AppCompatActivity {
 
         @Override
         public void onFinish() {
-           showResult();
+            timerFlag = false;
+            nextQuest();
         }
     }
 
@@ -170,38 +179,29 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         rdc.setText(currentQ1.getOPTC());
         rdd.setText(currentQ1.getOPTD());
         if(ctr1<10)
-            qstnNo.setText("0" + ctr1 + "/30");
+            qstnNo.setText("0" + ctr1 + "/0");
         else
-            qstnNo.setText("" + ctr1+ "/30");
+            qstnNo.setText("" + ctr1+ "/10");
         ctr1++;
     }
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //Uncomment the below code to Set the message and title from the strings.xml file
-        //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
-
-        //Setting message manually and performing action on button click
-        builder.setMessage("If you close all your progress would not be saved... Do you wish to exit ?")
+        builder.setMessage(R.string.exit_fr_quest)
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Так", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Ні", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
                         dialog.cancel();
                     }
                 });
 
-        //Creating dialog box
         AlertDialog alert = builder.create();
-        //Setting the title manually
-        // alert.setTitle("CompQuiz");
         alert.show();
     }
 }

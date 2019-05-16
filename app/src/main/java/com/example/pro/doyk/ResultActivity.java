@@ -18,7 +18,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
-    int score=0,scoreOS=0,scoreCOMPFUNDA=0,scoreHARDWARE=0,scoreRandom=0;
+    int score=0,scoreOS=0;
     DbHelper dbHelper = new DbHelper(this);
     Button btnWrongQstns;
 
@@ -49,33 +49,14 @@ public class ResultActivity extends AppCompatActivity {
             levelName=b.getString("level_name");
             dbHelper.insertScore(scoreOS,catName,levelName);
             score = scoreOS;}
-//        } else if (b.containsKey("scoreCompFunda")) {
-//            scoreCOMPFUNDA = b.getInt("scoreCompFunda");
-//            tableName=b.getString("section");
-//            catName=b.getString("category");
-//            dbHelper.insertScoreCompFunda(scoreCOMPFUNDA,tableName,catName);
-//            score = scoreCOMPFUNDA;
-//        } else if (b.containsKey("scoreHardware")) {
-//            scoreHARDWARE = b.getInt("scoreHardware");
-//            tableName=b.getString("section");
-//            catName=b.getString("category");
-//            dbHelper.insertScoreHardware(scoreHARDWARE,tableName,catName);
-//            score = scoreHARDWARE;
-//        } else if (b.containsKey("scoreRandom")){
-//            scoreRandom = b.getInt("scoreRandom");
-//            tableName=b.getString("section");
-//            dbHelper.insertScoreFinal(scoreRandom,tableName);
-//            score = scoreRandom;
-//
-//        }
 
-        txtCorrectAns.setText("Total Answered : 30" + "\n" + "Correct Answered : " + score + "\nWrong Answered : " + (30 - score));
+        txtCorrectAns.setText("Надано відповідей : 10" + "\n" + "Правильних : " + score + "\n Хибних : " + (10 - score));
 
         wrongQuests = getIntent().getStringArrayListExtra("wrongQuestions");
         selectedAnswers = getIntent().getStringArrayListExtra("selectedAnswer");
         actualAnswers = getIntent().getStringArrayListExtra("actualAnswer");
 
-        double perc = score*3.33;
+        double perc = score*10;
         DecimalFormat df = new DecimalFormat("##.###");
         tvPerc = (TextView) findViewById(R.id.tvPerc);
         tvPerc.setText(""+df.format(perc)+" %");
@@ -83,13 +64,15 @@ public class ResultActivity extends AppCompatActivity {
         btnWrongQstns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this, WrongQuestion.class);
-                //Bundle b = new Bundle();
-                intent.putStringArrayListExtra("wrongQuestions", wrongQuests);
-                intent.putStringArrayListExtra("selectedAnswer", selectedAnswers);
-                intent.putStringArrayListExtra("actualAnswer", actualAnswers);
+                Intent intent = new Intent(ResultActivity.this, CategoryActivity.class);
                 startActivity(intent);
-                finish();
+//                Intent intent = new Intent(ResultActivity.this, WrongQuestion.class);
+//                //Bundle b = new Bundle();
+//                intent.putStringArrayListExtra("wrongQuestions", wrongQuests);
+//                intent.putStringArrayListExtra("selectedAnswer", selectedAnswers);
+//                intent.putStringArrayListExtra("actualAnswer", actualAnswers);
+//                startActivity(intent);
+//                finish();
             }
         });
     }

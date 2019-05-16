@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Do yo know?</string>
+    <string name="exit_dial">Ви впевнені, що хочете вийти?</string>
+    <string name="exit_fr_quest">Якщо ви вийдете, поточний прогрес буде втрачено. Вийти?</string>
+    <string name="ans_dont_add">Час питання вийшов.</string>
 </resources>

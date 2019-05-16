@@ -34,7 +34,8 @@
         <activity android:name=".Main2ActivityFinal" />
         <activity android:name=".LocalScoreBoard.ScoreLevel1" />
         <activity android:name=".LeaderBoard.Fundamentals.LeaderBoardAcSec1B" />
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

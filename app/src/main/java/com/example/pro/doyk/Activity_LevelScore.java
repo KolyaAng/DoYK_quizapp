@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
@@ -17,8 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Activity_LevelScore extends AppCompatActivity {
 
-    LinearLayout yourScore;
-    LinearLayout leaderBoard;
+    Button catScore;
+    Button leaderBoard;
+    TextView yourScore;
     FirebaseAuth mAuth;
     DatabaseReference mUserRefDatabase;
     ChildEventListener mChildEventListener;
@@ -39,9 +42,13 @@ public class Activity_LevelScore extends AppCompatActivity {
         String userId = mAuth.getCurrentUser().getUid();
         mUserRefDatabase.child("users").child(userId).child("totalScoreMarks").setValue(totalScore);
 
-        yourScore=(LinearLayout)findViewById(R.id.inter);
-        leaderBoard=(LinearLayout)findViewById(R.id.expert);
-        yourScore.setOnClickListener(new View.OnClickListener() {
+        catScore = findViewById(R.id.btnCatScore);
+        leaderBoard = findViewById(R.id.btnLeaderb);
+        yourScore = findViewById(R.id.tvYourS);
+
+        yourScore.setText("Твій результат: " + String.valueOf(totalScore));
+
+        catScore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getApplicationContext(),ScoreLevel1.class);
@@ -53,11 +60,11 @@ public class Activity_LevelScore extends AppCompatActivity {
         leaderBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int totalScore = dbHelper.getTotalScore();
-                String ts = String.valueOf(totalScore);
-
-                Toast toast = Toast.makeText(getApplicationContext(), ts, Toast.LENGTH_LONG);
-                toast.show();
+//                int totalScore = dbHelper.getTotalScore();
+//                String ts = String.valueOf(totalScore);
+//
+//                Toast toast = Toast.makeText(getApplicationContext(), ts, Toast.LENGTH_LONG);
+//                toast.show();
 
                 Intent i= new Intent(getApplicationContext(), LeaderBoardAcSec1B.class);
                 startActivity(i);

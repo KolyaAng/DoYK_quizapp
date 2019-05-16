@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,11 +19,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout lfunda;
-    LinearLayout os;
-    LinearLayout hw;
-    LinearLayout finale;
-    LinearLayout sc;
+
+    Button startGame;
+    Button settings;
+    Button scores;
+    Button exit;
 
     public FirebaseAuth.AuthStateListener mAuthListener;
     public String mCurrentUserUid;
@@ -35,32 +36,44 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setAuthListener();
         setAuthInstance();
-        //setUsersDatabase();
-        lfunda=(LinearLayout)findViewById(R.id.fundamentals);
-        os=(LinearLayout)findViewById(R.id.operating);
-        hw=(LinearLayout)findViewById(R.id.hardware);
-        finale=(LinearLayout)findViewById(R.id.finale);
-        sc=(LinearLayout)findViewById(R.id.score);
+        startGame = findViewById(R.id.btnStart);
+        settings = findViewById(R.id.btnSet);
+        scores = findViewById(R.id.btnScore);
+        exit = findViewById(R.id.btnExit);
 
-        lfunda.setOnClickListener(new View.OnClickListener() {
+
+        startGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getApplicationContext(),CategoryActivity.class);
-                i.putExtra("table_name","questCompFunda");
-
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
 
             }
         });
 
-        sc.setOnClickListener(new View.OnClickListener() {
+        scores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(getApplicationContext(),Activity_LevelScore.class);
-                //i.putExtra("table_name","questOS");
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i= new Intent(getApplicationContext(),SettingsActivity.class);
+//                startActivity(i);
+//                overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+                logout();
+            }
+        });
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            closeApp();
             }
         });
     }
@@ -118,56 +131,33 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(getIntent()));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        if(item.getItemId()==R.id.action_logout){
-            logout();
-            return true;
-        }
-        //noinspection SimplifiableIfStatement
+     public  void closeApp(){
+         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+         builder.setMessage(R.string.exit_dial)
+                 .setCancelable(false)
+                 .setPositiveButton("Так", new DialogInterface.OnClickListener() {
+                     public void onClick(DialogInterface dialog, int id) {
+                         finish();
+                     }
+                 })
+                 .setNegativeButton("Ні", new DialogInterface.OnClickListener() {
+                     public void onClick(DialogInterface dialog, int id) {
+                         dialog.cancel();
+                     }
+                 });
 
-        return super.onOptionsItemSelected(item);
-    }
+         AlertDialog alert = builder.create();
+         alert.show();
+     }
+
     private void logout() {
         mAuth.signOut();
     }
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //Uncomment the below code to Set the message and title from the strings.xml file
-        //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+        closeApp();
 
-        //Setting message manually and performing action on button click
-        builder.setMessage("Do you want to close this app?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        //  Action for 'NO' Button
-                        dialog.cancel();
-                    }
-                });
-
-        //Creating dialog box
-        AlertDialog alert = builder.create();
-        //Setting the title manually
-        // alert.setTitle("CompQuiz");
-        alert.show();
     }
 }
