@@ -63,7 +63,6 @@ public class LeaderBoardSec1B extends RecyclerView.Adapter<LeaderBoardSec1B.View
         Map.Entry<String, Integer> fireUser =  list.get(position);
         {
             holder.getUserDisplayName().setText(fireUser.getKey());
-            //compFundaScore
             holder.getUserTotalScore().setText("" + fireUser.getValue());
         }
     }

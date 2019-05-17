@@ -64,15 +64,13 @@ public class ResultActivity extends AppCompatActivity {
         btnWrongQstns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this, CategoryActivity.class);
-                startActivity(intent);
 //                Intent intent = new Intent(ResultActivity.this, WrongQuestion.class);
 //                //Bundle b = new Bundle();
 //                intent.putStringArrayListExtra("wrongQuestions", wrongQuests);
 //                intent.putStringArrayListExtra("selectedAnswer", selectedAnswers);
 //                intent.putStringArrayListExtra("actualAnswer", actualAnswers);
 //                startActivity(intent);
-//                finish();
+                finish();
             }
         });
     }

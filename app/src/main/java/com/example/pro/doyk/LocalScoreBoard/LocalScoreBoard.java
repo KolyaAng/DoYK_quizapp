@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.example.pro.doyk.DbHelper.DbHelper;
 import com.example.pro.doyk.R;
 
-public class ScoreLevel1 extends AppCompatActivity {
+public class LocalScoreBoard extends AppCompatActivity {
 
     DbHelper dbHelper = new DbHelper(this);
     TextView s1,s2,s3;

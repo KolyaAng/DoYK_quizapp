@@ -91,6 +91,8 @@ public class DbHelper extends SQLiteOpenHelper {
         this.addQuestionOS(q14);
         QuestionOS q15 = new QuestionOS("quest from Geo,B,5","ok","Normal","Differential","Incremental","ok","catGeography","B");
         this.addQuestionOS(q15);
+        QuestionOS q16 = new QuestionOS("quest from Art,B,1","ok","Normal","Differential","Incremental","ok","catArt","B");
+        this.addQuestionOS(q16);
 
     }
 
@@ -118,33 +120,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public List<QuestionOS> getAllQuestions(String tname, String lname)
     {
         List<QuestionOS> quesList1= new ArrayList<QuestionOS>();
-        Log.d("CategoryName", tname);
-           String selectQuery1 = "SELECT  * FROM "+ TABLE_QUEST +" WHERE "+KEY_CAT+" = '"+tname+"' AND "+KEY_LEVEL+" = '"+lname+"'";
-        //AND "+KEY_LEVEL+" = '"+lname+"'
-        dbase=this.getReadableDatabase();
-        Cursor cursor = dbase.rawQuery(selectQuery1, null);
-        // looping through all rows and adding to list
-        if (cursor.moveToFirst()) {
-            do {
-                QuestionOS quest1 = new QuestionOS();
-                quest1.setID(cursor.getInt(0));
-                quest1.setQUESTION(cursor.getString(1));
-                quest1.setANSWER(cursor.getString(2));
-                quest1.setOPTA(cursor.getString(3));
-                quest1.setOPTB(cursor.getString(4));
-                quest1.setOPTC(cursor.getString(5));
-                quest1.setOPTD(cursor.getString(6));
-                quesList1.add(quest1);
-            } while (cursor.moveToNext());
-        }
-        // return quest list
-        return quesList1;
-    }
 
-    public List<QuestionOS> getRealAllQuestions()
-    {
-        List<QuestionOS> quesList1= new ArrayList<QuestionOS>();
-        String selectQuery1 = "SELECT  * FROM "+ TABLE_QUEST;
+        String selectQuery1;
+        if(tname.equals("catAll")){
+            selectQuery1 = "SELECT  * FROM "+ TABLE_QUEST;
+        }else
+            {
+        selectQuery1 = "SELECT  * FROM "+ TABLE_QUEST +" WHERE "+KEY_CAT+" = '"+tname+"' AND "+KEY_LEVEL+" = '"+lname+"'";}
+
         dbase=this.getReadableDatabase();
         Cursor cursor = dbase.rawQuery(selectQuery1, null);
         if (cursor.moveToFirst()) {
@@ -160,25 +143,19 @@ public class DbHelper extends SQLiteOpenHelper {
                 quesList1.add(quest1);
             } while (cursor.moveToNext());
         }
-        // return quest list
         return quesList1;
     }
-
 
     public boolean insertScore(int scoreOS, String tname, String cname){
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("uyebav", "nahuy");
-
         ContentValues contentValues = new ContentValues();
         contentValues.put(SCORE_KEY_SECTION.toString(),tname);
         contentValues.put(SCORE_KEY_LVL.toString(),cname);
         contentValues.put(SCORE_KEY_SCORE.toString(), scoreOS);
         long resultscore = db.insert(TABLE_SCORE, null, contentValues);
         if(resultscore == -1){
-            Log.d("posol", "nahuy");
             return false;}
         else{
-            Log.d("posol", "ne posol");
             return true;
             }
     }
@@ -196,15 +173,15 @@ public class DbHelper extends SQLiteOpenHelper {
         return x;
     }
 
-    public int getTotalScore(){
-        Cursor c;
-        SQLiteDatabase db = this.getWritableDatabase();
-        String sqlSelectQuery="SELECT SUM(" + SCORE_KEY_SCORE + ") FROM "+ TABLE_SCORE +"";
-        c=db.rawQuery(sqlSelectQuery, null);
-        c.moveToFirst();
-        int x=c.getInt(0);
-        Log.d("posol", String.valueOf(x));
-        return x;
-    }
+//    public int getTotalScore(){
+//        Cursor c;
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String sqlSelectQuery="SELECT SUM(" + SCORE_KEY_SCORE + ") FROM "+ TABLE_SCORE +"";
+//        c=db.rawQuery(sqlSelectQuery, null);
+//        c.moveToFirst();
+//        int x=c.getInt(0);
+//        Log.d("posol", String.valueOf(x));
+//        return x;
+//    }
 
 }

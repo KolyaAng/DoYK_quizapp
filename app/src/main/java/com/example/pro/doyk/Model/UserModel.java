@@ -4,17 +4,45 @@ public class UserModel {
     private String displayName;
     private String email;
     private long createdAt;
-    public int totalScoreMarks = 3;
+    public int catPhisMarks = 0;
+    public int catGeoMarks = 0;
+    public int catRelMarks = 0;
+    public int catHisMarks = 0;
+    public int catBioMarks = 0;
+    public int catCinMarks = 0;
+    public int catArtMarks = 0;
+    public int catLinMarks = 0;
+    public int catSpoMarks = 0;
+    public int catTecMarks = 0;
+    public int catLitMarks = 0;
+    public int catAllMarks = 0;
+    public int totalScoreMarks = 0;
+
 
     private String mRecipientId;
 
     public UserModel() {
     }
 
-    public UserModel(String displayName, String email,long createdAt,int totalScoreMarks) {
+    public UserModel(String displayName, String email,long createdAt, int catPhisMarks, int catGeoMarks,
+                     int catRelMarks, int catHisMarks, int catBioMarks, int catCinMarks, int catArtMarks,
+                     int catLinMarks, int catSpoMarks, int catTecMarks, int catLitMarks, int catAllMarks,
+                     int totalScoreMarks) {
         this.displayName = displayName;
         this.email = email;
         this.createdAt = createdAt;
+        this.catPhisMarks = catPhisMarks;
+        this.catGeoMarks = catGeoMarks;
+        this.catRelMarks = catRelMarks;
+        this.catHisMarks = catHisMarks;
+        this.catBioMarks = catBioMarks;
+        this.catCinMarks = catCinMarks;
+        this.catArtMarks = catArtMarks;
+        this.catLinMarks = catLinMarks;
+        this.catSpoMarks = catSpoMarks;
+        this.catTecMarks = catTecMarks;
+        this.catLitMarks = catLitMarks;
+        this.catAllMarks = catAllMarks;
         this.totalScoreMarks = totalScoreMarks;
     }
 

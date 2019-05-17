@@ -7,14 +7,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.example.pro.doyk.Adapter.CategoryList;
 import com.example.pro.doyk.DbHelper.DbHelper;
 import com.example.pro.doyk.Model.QuestionOS;
 
@@ -23,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import static com.example.pro.doyk.Adapter.CategoryList.getCategoryTitle;
+import static com.example.pro.doyk.Adapter.Category.getCategoryTitle;
 
 public class Main2ActivitySec1 extends AppCompatActivity {
     List<QuestionOS> quesList;
@@ -46,7 +43,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
     boolean timerFlag;
     ///
 ///
-    final CounterClass timer = new CounterClass(31500, 1000);
+    final CounterClass timer = new CounterClass(31000, 1000);
 
     public void nextQuest(){
         timer.start();
@@ -76,7 +73,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         }
 
         grp.clearCheck();
-        if (ctr1 < 5) {
+        if (ctr1 < quesList.size()) {
             currentQ1 = quesList.get(list.get(ctr1));
             setQuestionView();
         } else {
@@ -108,13 +105,10 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         textViewTime = (TextView)findViewById(R.id.textViewTime);
        // final CounterClass timer = new CounterClass(1800000, 1000);
         timer.start();
-        if(catName == null){quesList = db.getRealAllQuestions();
-        Log.d("CategoryName", catName);
-        }else{
-        quesList =db.getAllQuestions(catName,levelName);}
-        for(int i=0;i<5;i++){
+        quesList = db.getAllQuestions(catName,levelName);
+        for(int i = 0; i < quesList.size(); i++){
             while(true){
-                int next = random.nextInt(5);
+                int next = random.nextInt(quesList.size());
                 if(!list.contains(next))
                 {
                     list.add(next);

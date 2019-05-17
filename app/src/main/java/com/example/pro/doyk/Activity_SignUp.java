@@ -168,7 +168,20 @@ public class Activity_SignUp extends AppCompatActivity {
         return upassword.getText().toString().trim();
     }
 
-    public int getTotalScoreMarks(){
+    private int getCatPhisMarks(){return 0;}
+    private int getCatGeoMarks(){return 0;}
+    private int getCatRelMarks(){return 0;}
+    private int getCatHisMarks(){return 0;}
+    private int getCatBioMarks(){return 0;}
+    private int getCatCinMarks(){return 0;}
+    private int getCatArtMarks(){return 0;}
+    private int getCatLinMarks(){return 0;}
+    private int getCatSpoMarks(){return 0;}
+    private int getCatTecMarks(){return 0;}
+    private int getCatLitMarks(){return 0;}
+    private int getCatAllMarks(){return 0;}
+
+    private int getTotalScoreMarks(){
         return 0;
     }
 
@@ -221,6 +234,18 @@ public class Activity_SignUp extends AppCompatActivity {
                 getUserDisplayName(),
                 getUserEmail(),
                 new Date().getTime(),
+                getCatPhisMarks(),
+                getCatGeoMarks(),
+                getCatRelMarks(),
+                getCatHisMarks(),
+                getCatBioMarks(),
+                getCatCinMarks(),
+                getCatArtMarks(),
+                getCatLinMarks(),
+                getCatSpoMarks(),
+                getCatTecMarks(),
+                getCatLitMarks(),
+                getCatAllMarks(),
                 getTotalScoreMarks()
         );
     }

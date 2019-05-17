@@ -29,10 +29,10 @@
         <activity android:name=".Main2ActivitySec1" />
         <activity android:name=".WrongQuestion" />
         <activity android:name=".ResultActivity" />
-        <activity android:name=".Activity_LevelScore" />
+        <activity android:name=".ActivityMyScore" />
         <activity android:name=".Info" />
         <activity android:name=".Main2ActivityFinal" />
-        <activity android:name=".LocalScoreBoard.ScoreLevel1" />
+        <activity android:name=".LocalScoreBoard.LocalScoreBoard" />
         <activity android:name=".LeaderBoard.Fundamentals.LeaderBoardAcSec1B" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".SettingsActivity"></activity>
