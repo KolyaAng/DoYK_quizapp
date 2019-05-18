@@ -3,12 +3,14 @@ package com.example.pro.doyk;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pro.doyk.Model.UserModel;
@@ -41,11 +43,17 @@ public class Activity_SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.ab_align);
+        TextView tvTitle = findViewById(R.id.tvTitle);
+        tvTitle.setText("Реєстрація");
+
         username = (EditText) findViewById(R.id.edusername);
         uemail = (EditText) findViewById(R.id.edemail);
         upassword = (EditText) findViewById(R.id.edpass);
         urepassword = (EditText) findViewById(R.id.edrepass);
-        btn_Sign_Up = (Button) findViewById(R.id.button1);
+        btn_Sign_Up = (Button) findViewById(R.id.btnSignUp);
         btn_Already_Member = (Button) findViewById(R.id.btn_Already_Member);
         setAuthInstance();
         setDatabaseInstance();

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -127,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         //startActivity(new Intent(getIntent()));
     }
+
+
 
 
      public  void closeApp(){

@@ -11,5 +11,7 @@
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
     <color name="orange">#f2580b</color>
+    <color name="black">#000000</color>
+    <color name="btncolor">#00b140</color>
 </resources>
 

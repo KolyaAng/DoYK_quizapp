@@ -1,10 +1,12 @@
 package com.example.pro.doyk.LeaderBoard.Fundamentals;
 
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.example.pro.doyk.Adapter.LeaderBoardSec1B;
 import com.example.pro.doyk.Model.UserModel;
@@ -35,15 +37,20 @@ public class LeaderBoardAcSec1B extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board_ac_sec1_b);
-        setTitle("Таблиця лідерів");
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.ab_align);
+        TextView tvTitle = findViewById(R.id.tvTitle);
+        tvTitle.setText("Таблиця лідерів");
+
         mUsersRecyclerView=(RecyclerView)findViewById(R.id.recycler_view_users);
         setAuthInstance();
         setUsersDatabase();
         setUserRecyclerView();
         setUsersKeyList();
         setAuthListener();
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setAuthInstance() {

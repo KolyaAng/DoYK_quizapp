@@ -18,7 +18,7 @@ public class Activity_Levels1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels1);
-        setTitle("Comp Funda Levels");
+        setTitle("Етапи");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         beginner=(LinearLayout)findViewById(R.id.begin);

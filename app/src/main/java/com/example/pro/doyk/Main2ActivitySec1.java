@@ -3,6 +3,7 @@ package com.example.pro.doyk;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,53 +42,20 @@ public class Main2ActivitySec1 extends AppCompatActivity {
     String catName="",levelName="";
     TextView qstnNo;
     boolean timerFlag;
+
     ///
 ///
-    final CounterClass timer = new CounterClass(31000, 1000);
-
-    public void nextQuest(){
-        timer.start();
-        if (timerFlag){
-                RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
-                if (currentQ1.getANSWER().equals(answer.getText())) {
-                    score++;
-                }
-                else
-                {
-                    wrongQuestList.add(number, currentQ1.getQUESTION());
-                    selectedAnswer.add(number, answer.getText().toString());
-                    actualAnswer.add(number, currentQ1.getANSWER());
-                    number++;
-                }
-        }else
-        {
-            wrongQuestList.add(number, currentQ1.getQUESTION());
-            selectedAnswer.add(number, "Час питання вийшов.");
-            actualAnswer.add(number, currentQ1.getANSWER());
-            number++;
-        }
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        grp.clearCheck();
-        if (ctr1 < quesList.size()) {
-            currentQ1 = quesList.get(list.get(ctr1));
-            setQuestionView();
-        } else {
-            timer.cancel();
-            showResult();
-        }
-
-    }
+    final CounterClass timer = new CounterClass(21000, 1000);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2_sec1);
         qstnNo = (TextView)findViewById(R.id.qstnNo);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.ab_align);
+        TextView tvTitle = findViewById(R.id.tvTitle);
         
         Intent iin=getIntent();
         Bundle b=iin.getExtras();
@@ -98,9 +66,9 @@ public class Main2ActivitySec1 extends AppCompatActivity {
             Log.d("CategoryName",catName);
             Log.d("LevelName",levelName);
         }
-        String catTitle = getCategoryTitle(catName);
-        setTitle(catTitle);
+        tvTitle.setText(getCategoryTitle(catName));
         number=0;
+
         DbHelper db= new DbHelper(this);
         textViewTime = (TextView)findViewById(R.id.textViewTime);
        // final CounterClass timer = new CounterClass(1800000, 1000);
@@ -122,7 +90,7 @@ public class Main2ActivitySec1 extends AppCompatActivity {
         rdb =(RadioButton)findViewById(R.id.radio1);
         rdc =(RadioButton)findViewById(R.id.radio2);
         rdd =(RadioButton)findViewById(R.id.radio3);
-        butNext =(Button)findViewById(R.id.button1);
+//        butNext =(Button)findViewById(R.id.button1);
         setQuestionView();
         grp = (RadioGroup) findViewById(R.id.radioGroup1);
         grp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -158,6 +126,51 @@ public class Main2ActivitySec1 extends AppCompatActivity {
             timerFlag = false;
             nextQuest();
         }
+    }
+
+    public void nextQuest(){
+        timer.start();
+        if (timerFlag){
+            RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
+            if (currentQ1.getANSWER().equals(answer.getText())) {
+                score++;
+            }
+            else
+            {
+                wrongQuestList.add(number, currentQ1.getQUESTION());
+                selectedAnswer.add(number, answer.getText().toString());
+                actualAnswer.add(number, currentQ1.getANSWER());
+                number++;
+            }
+        }else
+        {
+            wrongQuestList.add(number, currentQ1.getQUESTION());
+            selectedAnswer.add(number, "Час питання вийшов.");
+            actualAnswer.add(number, currentQ1.getANSWER());
+            number++;
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        grp.clearCheck();
+        if (ctr1 < increment(quesList.size())) {
+            currentQ1 = quesList.get(list.get(ctr1));
+            setQuestionView();
+        } else {
+            timer.cancel();
+            showResult();
+        }
+
+    }
+
+    public int increment(int size){
+        int i;
+        if(size < 10){i = size;}
+        else{i = 10;}
+        return i;
     }
 
     public void showResult(){

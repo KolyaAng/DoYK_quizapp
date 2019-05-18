@@ -1,5 +1,6 @@
 package com.example.pro.doyk.LocalScoreBoard;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -16,9 +17,14 @@ public class LocalScoreBoard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorelevel1);
-        setTitle("Особистий рейтинг");
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+
+        getSupportActionBar().setCustomView(R.layout.ab_align);
+        TextView tvTitle = findViewById(R.id.tvTitle);
+        tvTitle.setText("Рейтинг по категоріям");
+
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         int compFundaB,compFundaI,compFundaE;
         compFundaB=compFundaI=compFundaE=0;
         compFundaB=dbHelper.getScoreOSB("catPhysic","B");

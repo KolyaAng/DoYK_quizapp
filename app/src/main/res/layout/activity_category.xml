@@ -14,471 +14,279 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/llcat1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/phys"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat1"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Фізика"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat2"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Географія"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Фізика"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llcat2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/geo"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat3"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Релігія"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat4"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Історія"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Географія"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llcat3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/rel"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat5"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Біологія"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat6"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Кіно"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Релігія"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llcat4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/his"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat7"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Мистецтво"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat8"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Мовознавство"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Історія"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llcat5"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/bio"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat9"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Спорт"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat10"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llcat10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Технології"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Біологія"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llcat6"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_height="130dp"
+            android:background="@drawable/cin"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat11"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Кіно"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/llcat11"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/llcat7"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/art"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_purple"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_computer" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Мистецтво"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Література"
-                        android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/llcat8"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/lin"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Мовознавство"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cat12"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:layout_margin="10dp">
+        <LinearLayout
+            android:id="@+id/llcat9"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/spo"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/llcat12"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Спорт"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        android:background="@drawable/circle_background_pink"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_software" />
+        <LinearLayout
+            android:id="@+id/llcat10"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/tec"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Все разом"
-                        android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Технології"
+                android:textStyle="bold" />
+        </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="10dp"
-                        android:background="@color/lightgray" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
+        <LinearLayout
+            android:id="@+id/llcat11"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/lit"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Література"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llcat12"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/all"
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/shapeofrectangle_tv"
+                android:gravity="center"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="Все разом"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>

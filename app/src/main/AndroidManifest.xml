@@ -5,37 +5,46 @@
     <application
         android:name=".Persistance_Object.MyFirebaseApp"
         android:allowBackup="true"
-        android:icon="@drawable/ic_sri"
+        android:icon="@drawable/icon_with_bg"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_sri"
+        android:roundIcon="@drawable/icon_with_bg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+        />
+
+        <activity
+            android:name=".Activity_SignUp"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity_Login"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".Activity_Levels1" />
+        <activity android:name=".Main2ActivitySec1" />
+        <activity android:name=".WrongQuestion" />
+        <activity android:name=".ResultActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ActivityMyScore" />
+        <activity android:name=".LocalScoreBoard.LocalScoreBoard" />
+        <activity android:name=".LeaderBoard.Fundamentals.LeaderBoardAcSec1B" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".SettingsActivity" />
+
+        <activity android:name=".StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activity_SignUp"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Activity_Login"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Activity_Levels1" />
-        <activity android:name=".Main2ActivitySec1" />
-        <activity android:name=".WrongQuestion" />
-        <activity android:name=".ResultActivity" />
-        <activity android:name=".ActivityMyScore" />
-        <activity android:name=".Info" />
-        <activity android:name=".Main2ActivityFinal" />
-        <activity android:name=".LocalScoreBoard.LocalScoreBoard" />
-        <activity android:name=".LeaderBoard.Fundamentals.LeaderBoardAcSec1B" />
-        <activity android:name=".CategoryActivity" />
-        <activity android:name=".SettingsActivity"></activity>
+
     </application>
 
 </manifest>

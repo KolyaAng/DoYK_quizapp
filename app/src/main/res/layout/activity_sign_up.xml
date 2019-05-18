@@ -4,7 +4,7 @@
     android:id="@+id/svSU"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/background1"
 
     tools:context=".Activity_SignUp">
 
@@ -16,23 +16,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="30dp"
+            android:orientation="vertical"></LinearLayout>
+
         <EditText
             android:id="@+id/edusername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:layout_alignParentTop="false"
-            android:gravity="center"
+            android:layout_marginLeft="60dp"
 
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/shapeofrectange"
+            android:background="@drawable/shapeofrectangle_et"
+            android:gravity="center"
             android:hint="@string/username"
             android:inputType="text"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:textColor="#ffffff"
+            android:textColor="@color/black"
+            android:textColorLink="@color/black"
             android:textSize="24sp" />
 
         <EditText
@@ -41,78 +48,82 @@
             android:layout_height="wrap_content"
 
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="30dp"
-            android:background="@drawable/shapeofrectange"
+            android:background="@drawable/shapeofrectangle_et"
             android:gravity="center"
             android:hint="Email"
             android:inputType="text|textEmailAddress"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
+            android:textColorLink="@color/black"
             android:textSize="24sp" />
 
         <EditText
             android:id="@+id/edpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-
             android:layout_alignParentTop="true"
-            android:background="@drawable/shapeofrectange"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+
+            android:background="@drawable/shapeofrectangle_et"
+            android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
+            android:textColorLink="@color/black"
             android:textSize="24sp" />
 
         <EditText
             android:id="@+id/edrepass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="30dp"
             android:layout_alignParentTop="true"
-            android:background="@drawable/shapeofrectange"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shapeofrectangle_et"
+            android:gravity="center"
             android:hint="Re-enter Password"
             android:inputType="textPassword"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
+            android:textColorLink="@color/black"
             android:textSize="24sp" />
 
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/shapeofrectanglebtn"
             android:fontFamily="sans-serif"
             android:text="Реєстрація"
-            android:textColor="#fff" />
+            android:textColor="@color/white"
+            android:textSize="24sp" />
 
         <Button
             android:id="@+id/btn_Already_Member"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
             android:layout_marginTop="15dp"
             android:background="@color/transparent"
             android:fontFamily="sans-serif"
             android:text="Already a member ? Login Here"
             android:textAllCaps="false"
-            android:textColor="#000000"
-            android:textSize="13sp" />
+            android:textColor="@color/black"
+            android:textSize="14sp" />
 
     </LinearLayout>
 
