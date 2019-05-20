@@ -9,8 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
-import com.example.pro.doyk.LeaderBoard.Fundamentals.LeaderBoardAcSec1B;
-import com.example.pro.doyk.LocalScoreBoard.LocalScoreBoard;
+import com.example.pro.doyk.Scores.LeaderBoard;
+import com.example.pro.doyk.Scores.LocalScoreBoard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +31,7 @@ public class ActivityMyScore extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_score);
+        setContentView(R.layout.activity_my_score);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
 
         getSupportActionBar().setCustomView(R.layout.ab_align);
@@ -77,7 +77,7 @@ public class ActivityMyScore extends AppCompatActivity {
         leaderBoard = findViewById(R.id.btnLeaderb);
         yourScore = findViewById(R.id.tvYourS);
 
-        yourScore.setText("Твій результат: " + String.valueOf(totalScore));
+        yourScore.setText(String.valueOf(totalScore));
 
         catScore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +97,7 @@ public class ActivityMyScore extends AppCompatActivity {
 //                Toast toast = Toast.makeText(getApplicationContext(), ts, Toast.LENGTH_LONG);
 //                toast.show();
 
-                Intent i= new Intent(getApplicationContext(), LeaderBoardAcSec1B.class);
+                Intent i= new Intent(getApplicationContext(), LeaderBoard.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
             }

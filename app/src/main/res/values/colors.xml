@@ -6,12 +6,18 @@
     <color name="lightgray">#ededed</color>
     <color name="deeppurple">#7c4dff</color>
     <color name="yellow">#ffb300</color>
-    <color name="green">#00bfa5</color>
+    <color name="see">#00bfa5</color>
     <color name="colorAccent">#FF4081</color>
     <color name="transparent">#00000000</color>
     <color name="white">#ffffff</color>
     <color name="orange">#f2580b</color>
     <color name="black">#000000</color>
-    <color name="btncolor">#00b140</color>
+    <color name="green">#16b601</color>
+    <color name="red">#df1002</color>
+    <color name="btncolor">#ffc173</color>
+    <color name="btncolor1">#a10df1</color>
+    <color name="btncolor_dark">#5906a7</color>
+    <color name="tvcolor">#ffffff</color>
+    <color name="colorApp">#65a6d1</color>
 </resources>
 

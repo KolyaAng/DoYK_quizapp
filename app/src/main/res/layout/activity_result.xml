@@ -4,171 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorApp"
     tools:context=".ResultActivity">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        android:layout_height="match_parent">
+        android:layout_marginTop="0dp"
+        android:background="@drawable/shapeofrectangle_tv"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout1"
+        <LinearLayout
+            android:id="@+id/imgL"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/linearlayout1"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@color/deeppurple">
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_marginTop="20dp"
-                    android:padding="12dp"
-                    android:background="@drawable/circle_stroke_white"
-                    android:src="@drawable/ic_score"
-                    android:tint="#fff"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="РЕЗУЛЬТАТ"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="#fff"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:textSize="22sp"/>
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="-10dp"
-                android:layout_below="@+id/linearlayout1"
-                android:rotation="45"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/square"/>
-
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_below="@id/imageView1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Large Text"
-                android:id="@+id/txtCorrectAns" />
-
-        </RelativeLayout>
+            android:layout_height="210dp"
+            android:background="@drawable/all"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <RelativeLayout
-                android:id="@+id/relativeLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/relativeLayout2">
+                android:id="@+id/relativeLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="171dp"
+                android:layout_margin="30dp">
 
                 <ImageButton
                     android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
                     android:background="@android:color/transparent"
+                    android:padding="15dp"
                     android:src="@drawable/ic_circle" />
 
                 <TextView
-                    android:text="TextView"
+                    android:id="@+id/tvPerc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/imageView"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginBottom="70dp"
-                    android:id="@+id/tvPerc"
-                    android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-                <Button
-                    android:text="До категорій"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnWrongQstns"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/shapeofrectangle_tv_dark"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:text="TextView"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@color/deeppurple"
-                    android:textColor="#fff"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
+                    android:textColor="@color/white" />
             </RelativeLayout>
+        </LinearLayout>
 
-        </RelativeLayout>
-    <!--<TextView
-        android:id="@+id/textResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Large Text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/txtCorrectAns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="center"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/txtCorrectAns"
-        android:layout_below="@+id/textResult"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <Button
+            android:id="@+id/btnRepeat"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="Спробувати ще раз."
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/btncolor"
+            android:visibility="invisible" />
 
-    <ImageButton
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnWrongQstns"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_circle" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="121dp"
-        android:id="@+id/tvPerc"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+            <Button
+                android:id="@+id/btnWrongQstns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/shapeofrectanglebtn"
+                android:text="До категорій"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#fff" />
 
-    <Button
-        android:text="Show Answers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnWrongQstns"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:background="@color/deeppurple"
-        android:textColor="#fff"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />!-->
+            <Button
+                android:id="@+id/btnToScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shapeofrectanglebtn"
+                android:text="Рейтинг"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#fff" />
+        </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 </RelativeLayout>

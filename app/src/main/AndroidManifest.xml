@@ -10,33 +10,26 @@
         android:roundIcon="@drawable/icon_with_bg"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-        />
-
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activity_SignUp"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".Activity_Login"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".Activity_Levels1" />
-        <activity android:name=".Main2ActivitySec1" />
-        <activity android:name=".WrongQuestion" />
-        <activity android:name=".ResultActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ResultActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ActivityMyScore" />
-        <activity android:name=".LocalScoreBoard.LocalScoreBoard" />
-        <activity android:name=".LeaderBoard.Fundamentals.LeaderBoardAcSec1B" />
+        <activity android:name=".Scores.LocalScoreBoard" />
+        <activity android:name=".Scores.LeaderBoard" />
         <activity android:name=".CategoryActivity" />
-        <activity android:name=".SettingsActivity" />
-
-        <activity android:name=".StartActivity"
+        <activity
+            android:name=".StartActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".QuestActivity"></activity>
     </application>
 
 </manifest>

@@ -109,7 +109,8 @@ public class CategoryActivity extends AppCompatActivity {
                     catName = "catAll";
                     break;
             }
-            Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
+            //Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
+            Intent i= new Intent(getApplicationContext(),QuestActivity.class);
             i.putExtra("category_name",catName);
             //level_name = B доки нема етапів
             i.putExtra("level_name", "B");

@@ -8,17 +8,16 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Type Your Email Id : "
+        android:text="Введи свій е-мейл"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorPrimary"
-        />
+        android:textColor="@color/colorPrimary" />
 
     <EditText
         android:id="@+id/editTextDialogUserInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textWebEmailAddress"
-        android:hint="email">
+        android:hint="е-мейл"
+        android:inputType="textWebEmailAddress">
 
         <requestFocus />
 
