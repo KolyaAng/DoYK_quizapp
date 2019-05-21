@@ -9,12 +9,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.pro.doyk.DbHelper.DbHelper;
+import com.example.pro.doyk.Model.QuestionOS;
+
+import java.util.List;
 import java.util.Locale;
 
 public class CategoryActivity extends AppCompatActivity {
 
     TextView tvTitle;
+
+    List<QuestionOS> quesList;
+    private DbHelper db;
 
     LinearLayout catPhis;
     LinearLayout catGeo;
@@ -64,6 +72,9 @@ public class CategoryActivity extends AppCompatActivity {
         catTec.setOnClickListener(listener);
         catLit.setOnClickListener(listener);
         catAll.setOnClickListener(listener);
+
+        db = new DbHelper(this);
+
     }
 
     String catName;
@@ -109,14 +120,21 @@ public class CategoryActivity extends AppCompatActivity {
                     catName = "catAll";
                     break;
             }
-            //Intent i= new Intent(getApplicationContext(),Main2ActivitySec1.class);
-            Intent i= new Intent(getApplicationContext(),QuestActivity.class);
-            i.putExtra("category_name",catName);
-            //level_name = B доки нема етапів
-            i.putExtra("level_name", "B");
-            Log.d("CategoryName", catName);
-            startActivity(i);
-            overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+
+            quesList = db.getAllQuestions(catName, "B");
+            if((quesList.size()) < 10){
+                Toast toast = Toast.makeText(getApplicationContext(), "Ця категорія ще недоступна.", Toast.LENGTH_LONG);
+                toast.show();
+            }
+            else {
+                Intent i = new Intent(getApplicationContext(), QuestActivity.class);
+                i.putExtra("category_name", catName);
+                //level_name = B доки нема етапів
+                i.putExtra("level_name", "B");
+                Log.d("CategoryName", catName);
+                startActivity(i);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            }
         }
 
     };
