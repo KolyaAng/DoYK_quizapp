@@ -4,27 +4,33 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
+import com.example.pro.doyk.Model.UserModel;
 import com.example.pro.doyk.Scores.LeaderBoard;
 import com.example.pro.doyk.Scores.LocalScoreBoard;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ActivityMyScore extends AppCompatActivity {
 
     Button catScore;
     Button leaderBoard;
     TextView yourScore;
+    TextView yourName;
     FirebaseAuth mAuth;
     DatabaseReference mUserRefDatabase;
-    ChildEventListener mChildEventListener;
     DbHelper dbHelper = new DbHelper(this);
+
+    String userName = "UserName";
     private int catPhisMarks, catGeoMarks, catRelMarks, catHisMarks, catBioMarks, catCinMarks;
     private int catArtMarks, catLinMarks, catSpoMarks, catTecMarks, catLitMarks, catAllMarks;
 
@@ -38,10 +44,13 @@ public class ActivityMyScore extends AppCompatActivity {
         TextView tvTitle = findViewById(R.id.tvTitle);
         tvTitle.setText("Рейтинг");
 
-//        getSupportActionBar().setHomeButtonEnabled(true);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setAuthInstance();
         setDatabaseInstance();
+
+//        Bundle b = getIntent().getExtras();
+//        if (b != null) {
+//            userName = b.getString("userName");
+//        }
 
         catPhisMarks = dbHelper.getScoreOSB("catPhysic","B");
         catGeoMarks = dbHelper.getScoreOSB("catGeography","B");
@@ -57,8 +66,24 @@ public class ActivityMyScore extends AppCompatActivity {
         catAllMarks = dbHelper.getScoreOSB("catAll","B");
         int totalScore = getTotalScore();
 
-
         String userId = mAuth.getCurrentUser().getUid();
+
+        mUserRefDatabase.child("users").child(userId).addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                userName = user.getDisplayName();
+                yourName.setText(String.valueOf(userName));
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("loadPost:onCancelled", databaseError.toException());
+            }
+
+        });
+
         mUserRefDatabase.child("users").child(userId).child("catPhisMarks").setValue(catPhisMarks);
         mUserRefDatabase.child("users").child(userId).child("catGeoMarks").setValue(catGeoMarks);
         mUserRefDatabase.child("users").child(userId).child("catRelMarks").setValue(catRelMarks);
@@ -76,7 +101,9 @@ public class ActivityMyScore extends AppCompatActivity {
         catScore = findViewById(R.id.btnCatScore);
         leaderBoard = findViewById(R.id.btnLeaderb);
         yourScore = findViewById(R.id.tvYourS);
+        yourName = findViewById(R.id.tvUserName);
 
+        //yourName.setText(String.valueOf(userName));
         yourScore.setText(String.valueOf(totalScore));
 
         catScore.setOnClickListener(new View.OnClickListener() {
@@ -91,12 +118,6 @@ public class ActivityMyScore extends AppCompatActivity {
         leaderBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                int totalScore = dbHelper.getTotalScore();
-//                String ts = String.valueOf(totalScore);
-//
-//                Toast toast = Toast.makeText(getApplicationContext(), ts, Toast.LENGTH_LONG);
-//                toast.show();
-
                 Intent i= new Intent(getApplicationContext(), LeaderBoard.class);
                 startActivity(i);
                 overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
@@ -122,7 +143,12 @@ public class ActivityMyScore extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume(){
+        super.onResume();
 
+        //startActivity(new Intent(getIntent()));
+    }
 
     @Override
     public boolean onSupportNavigateUp(){

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +18,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.pro.doyk.DbHelper.DbHelper;
+import com.example.pro.doyk.Model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Activity_Login extends AppCompatActivity {
 
@@ -31,6 +39,13 @@ public class Activity_Login extends AppCompatActivity {
     Button btn_new_user;
     private String email;
     private FirebaseAuth mAuth;
+
+    DatabaseReference mUserRefDatabase;
+    DbHelper dbHelper = new DbHelper(this);
+    int fbScore = 0;
+    String userName;
+    private int catPhisMarks, catGeoMarks, catRelMarks, catHisMarks, catBioMarks, catCinMarks;
+    private int catArtMarks, catLinMarks, catSpoMarks, catTecMarks, catLitMarks, catAllMarks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,14 +100,14 @@ public class Activity_Login extends AppCompatActivity {
         String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            user_email.setError("enter a valid email address");
+            user_email.setError("некоректна електронна адреса");
             valid = false;
         } else {
             user_pass.setError(null);
         }
 
         if (password.isEmpty() || (password.length()<8 || password.matches(pattern))) {
-            user_pass.setError("entered password must contain minimum 8 alphanumeric characters");
+            user_pass.setError("пароль повинен містити не менше 8-ми символів");
             valid = false;
         } else {
             user_pass.setError(null);
@@ -117,7 +132,7 @@ public class Activity_Login extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(Activity_Login.this);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage("Аутентифікація...");
         progressDialog.show();
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -126,6 +141,7 @@ public class Activity_Login extends AppCompatActivity {
                 progressDialog.dismiss();
 
                 if(task.isSuccessful()){
+                    setLocalScore();
                     goToMainActivity();
                 }else {
                     Toast.makeText(getApplicationContext(), "" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -207,6 +223,71 @@ public class Activity_Login extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void  setLocalScore(){
+
+
+        setAuthInstance();
+        setUsersDatabase();
+
+        mUserRefDatabase.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserModel user = dataSnapshot.getValue(UserModel.class);
+                userName = user.getDisplayName();
+
+                catPhisMarks = user.getCatPhisMarks();
+                insertFBScore(catPhisMarks, "catPhysic");
+                catGeoMarks = user.getCatGeoMarks();
+                insertFBScore(catGeoMarks, "catGeography");
+                catRelMarks = user.getCatRelMarks();
+                insertFBScore(catRelMarks, "catReligion");
+                catHisMarks = user.getCatHisMarks();
+                insertFBScore(catHisMarks, "catHistory");
+                catBioMarks = user.getCatBioMarks();
+                insertFBScore(catBioMarks, "catBiology");
+                catCinMarks = user.getCatCinMarks();
+                insertFBScore(catCinMarks, "catCinema");
+                catArtMarks = user.getCatArtMarks();
+                insertFBScore(catArtMarks, "catArt");
+                catLinMarks = user.getCatLinMarks();
+                insertFBScore(catLinMarks, "catLing");
+                catSpoMarks = user.getCatSpoMarks();
+                insertFBScore(catSpoMarks, "catSport");
+                catTecMarks = user.getCatTecMarks();
+                insertFBScore(catTecMarks, "catTechnology");
+                catLitMarks = user.getCatLitMarks();
+                insertFBScore(catLitMarks, "catLiterature");
+                catAllMarks = user.getCatAllMarks();
+                insertFBScore(catAllMarks, "catAll");
+
+                //tvTest.setText(String.valueOf(userName));
+
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("loadPost:onCancelled", databaseError.toException());
+            }
+
+        });
+    }
+
+    public void insertFBScore(int score, String catName){
+
+        dbHelper.insertScore(score,catName,"B");
+    }
+
+
+    private void setUsersDatabase() {
+        String userId = mAuth.getCurrentUser().getUid();
+        mUserRefDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
+    }
+
+    public String getUserName(){
+        return userName;
     }
 
 }

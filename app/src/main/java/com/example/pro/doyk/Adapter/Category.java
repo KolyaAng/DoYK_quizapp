@@ -87,6 +87,50 @@ public class Category {
         }
         return  catName;
     }
+
+    public static String getCategoryMarks(String key){
+        String catName = "totalScoreMarks";
+        switch (key){
+            case "catPhysic":
+                catName = "catPhisMarks";
+                break;
+            case "catGeography":
+                catName = "catGeoMarks";
+                break;
+            case "catReligion":
+                catName = "catRelMarks";
+                break;
+            case "catHistory":
+                catName = "catHisMarks";
+                break;
+            case "catBiology":
+                catName = "catBioMarks";
+                break;
+            case "catCinema":
+                catName = "catCinMarks";
+                break;
+            case "catArt":
+                catName = "catArtMarks";
+                break;
+            case "catLing":
+                catName = "catLinMarks";
+                break;
+            case "catSport":
+                catName = "catSpoMarks";
+                break;
+            case "catTechnology":
+                catName = "catTecMarks";
+                break;
+            case "catLiterature":
+                catName = "catLitMarks";
+                break;
+            case "catAll":
+                catName = "catAllMarks";
+                break;
+        }
+        return  catName;
+    }
+
 //
 //    public int getTotScore(){
 //        return;

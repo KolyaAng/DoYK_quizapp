@@ -92,28 +92,28 @@ public class Activity_SignUp extends AppCompatActivity {
         String password = upassword.getText().toString();
         String reEnterPassword = urepassword.getText().toString();
         if (name.isEmpty()) {
-            username.setError("enter user name");
+            username.setError("не введено нікнейм");
             valid = false;
         } else {
             username.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            uemail.setError("enter a valid email address");
+            uemail.setError("некоректна електронна адреса");
             valid = false;
         } else {
             uemail.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            upassword.setError(" entered password must contain 7 alphanumeric characters minimum");
+        if (password.isEmpty() || password.length() < 8 || password.length() > 15) {
+            upassword.setError("пароль повинен містити не менше 8 символів");
             valid = false;
         } else {
             upassword.setError(null);
         }
 
-        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
-            urepassword.setError("Password Do not match");
+        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 8 || reEnterPassword.length() > 15 || !(reEnterPassword.equals(password))) {
+            urepassword.setError("паролі не співпадають");
             valid = false;
         } else {
             urepassword.setError(null);
@@ -127,9 +127,9 @@ public class Activity_SignUp extends AppCompatActivity {
         boolean exist = retreiveUserNames(name);
         if (!validate()) {
         }
-//        else if (exist) {
-//            username.setError("enter the unique user name");
-//        }
+        else if (exist) {
+            username.setError("цей нікнейм вже зайнято");
+        }
         else {
             signUp(getUserEmail(), getUserPassword());
         }
@@ -157,7 +157,7 @@ public class Activity_SignUp extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Connection Error. Please try again in some time.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Відсутнє підключення до інтернету.", Toast.LENGTH_SHORT).show();
             }
         });
         return isTaken;

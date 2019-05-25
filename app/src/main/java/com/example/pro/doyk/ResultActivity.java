@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,14 +15,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pro.doyk.DbHelper.DbHelper;
+import com.example.pro.doyk.Model.UserModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import static com.example.pro.doyk.Adapter.Category.getCategoryImage;
+import static com.example.pro.doyk.Adapter.Category.getCategoryMarks;
 
 public class ResultActivity extends AppCompatActivity {
-    int score=0,scoreOS=0;
+
+    FirebaseAuth mAuth;
+    DatabaseReference mUserRefDatabase;
+
+    int score=0;
+    int fbScore = 0;
     DbHelper dbHelper = new DbHelper(this);
 
     Button btnWrongQstns;
@@ -35,6 +49,7 @@ public class ResultActivity extends AppCompatActivity {
 
     private ImageView img;
     private TextView tvPerc;
+    String userName = "UserNameR";
     String levelName="",catName="";
 
     @Override
@@ -52,16 +67,22 @@ public class ResultActivity extends AppCompatActivity {
         Animation rotate = AnimationUtils.loadAnimation(this, R.anim.rotate_around_center_point);
         rotate.setRepeatCount(1);
         img.startAnimation(rotate);
+        setAuthInstance();
+        setDatabaseInstance();
+
         //get text view
         TextView txtCorrectAns = (TextView) findViewById(R.id.txtCorrectAns);
         //get score
         final Bundle b = getIntent().getExtras();
         if (b != null) {
-            scoreOS = b.getInt("score");
+            score = b.getInt("score");
             catName=b.getString("category_name");
             levelName=b.getString("level_name");
-            dbHelper.insertScore(scoreOS,catName,levelName);
-            score = scoreOS;}
+            dbHelper.insertScore(score,catName,levelName);
+            }
+
+        setFBScore();
+
         String imgName = getCategoryImage(catName);
         imgL.setBackgroundResource(getResources().getIdentifier(imgName, "drawable", getPackageName()));
 
@@ -100,6 +121,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ResultActivity.this, ActivityMyScore.class);
+                intent.putExtra("userName", userName);
                 startActivity(intent);
                 finish();
             }
@@ -117,6 +139,22 @@ public class ResultActivity extends AppCompatActivity {
 
 
     }
+
+    public void setFBScore(){
+        String catMark = getCategoryMarks(catName);
+        fbScore = dbHelper.getScoreOSB(catName, levelName);
+        String userId = mAuth.getCurrentUser().getUid();
+        mUserRefDatabase.child("users").child(userId).child(catMark).setValue(fbScore);
+    }
+
+    private void setAuthInstance() {
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    private void setDatabaseInstance() {
+        mUserRefDatabase = FirebaseDatabase.getInstance().getReference();
+    }
+
     @Override
     public boolean onSupportNavigateUp(){
         finish();

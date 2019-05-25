@@ -46,6 +46,54 @@ public class UserModel {
         this.totalScoreMarks = totalScoreMarks;
     }
 
+    public int getCatPhisMarks() {
+        return catPhisMarks;
+    }
+
+    public int getCatGeoMarks() {
+        return catGeoMarks;
+    }
+
+    public int getCatRelMarks() {
+        return catRelMarks;
+    }
+
+    public int getCatHisMarks() {
+        return catHisMarks;
+    }
+
+    public int getCatBioMarks() {
+        return catBioMarks;
+    }
+
+    public int getCatCinMarks() {
+        return catCinMarks;
+    }
+
+    public int getCatArtMarks() {
+        return catArtMarks;
+    }
+
+    public int getCatLinMarks() {
+        return catLinMarks;
+    }
+
+    public int getCatSpoMarks() {
+        return catSpoMarks;
+    }
+
+    public int getCatTecMarks() {
+        return catTecMarks;
+    }
+
+    public int getCatLitMarks() {
+        return catLitMarks;
+    }
+
+    public int getCatAllMarks() {
+        return catAllMarks;
+    }
+
     public int getTotalScoreMarks() {
         return totalScoreMarks;
     }
