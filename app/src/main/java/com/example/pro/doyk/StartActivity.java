@@ -1,6 +1,7 @@
 package com.example.pro.doyk;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private ConstraintLayout layout;
 
-    private static final int SPLASH_DURATION = 2500;
+    private static final int SPLASH_DURATION = 3000;
 
     boolean resumeflag;
 
@@ -40,9 +41,12 @@ public class StartActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         layout = (ConstraintLayout) findViewById(R.id.startLayout);
         imageView = (ImageView) findViewById(R.id.ivSplashIcon);
-        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
+        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.jump);
         setAuthListener();
         setAuthInstance();
+
+        afterAnimation();
+        imageView.startAnimation(animation);
 
 
     }
@@ -94,6 +98,17 @@ public class StartActivity extends AppCompatActivity {
         overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
     }
 
+    private void afterAnimation(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(resumeflag){goToMain();}
+                else{goToLogin();}
+            }
+        }, 3000);
+    }
+
     private void initFunctionality() {
         layout.postDelayed(new Runnable() {
             @Override
@@ -135,7 +150,8 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        initFunctionality();
+
+    //    initFunctionality();
         //startActivity(new Intent(getIntent()));
     }
 }

@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         scores = findViewById(R.id.btnScore);
         exit = findViewById(R.id.btnExit);
 
+        settings.setEnabled(false);
+        settings.setVisibility(View.INVISIBLE);
 
         startGame.setOnClickListener(new View.OnClickListener() {
             @Override

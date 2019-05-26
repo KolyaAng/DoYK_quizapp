@@ -31,7 +31,7 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/shapeofrectanglebtn"
             android:text="Почати гру"
             android:textColor="@color/white"
@@ -50,18 +50,6 @@ android:orientation="vertical">
             android:textSize="24sp" />
 
         <Button
-            android:id="@+id/btnSet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shapeofrectanglebtn"
-            android:text="Змінити профіль"
-            android:textColor="@color/white"
-            android:textSize="24sp" />
-
-        <Button
             android:id="@+id/btnExit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +58,18 @@ android:orientation="vertical">
             android:layout_marginTop="15dp"
             android:background="@drawable/shapeofrectanglebtn"
             android:text="Вийти"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnSet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shapeofrectanglebtn"
+            android:text="Змінити профіль"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
